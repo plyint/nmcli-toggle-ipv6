@@ -12,14 +12,14 @@ NetworkManager is a part of the [GNOME](https://www.gnome.org) desktop environme
 
 ## Usage
 
-Make sure the script has executable permissions and then invoke it from the command line.
+Make sure the script has executable permissions and then invoke it using sudo from the command line.  The sudo command is required, so that the ipv6 addresses can be flushed from the interface.  If it is not provided an "Operation not permitted" error will occur.
 
 No arguments, the current active wifi interface will be toggled for ipv6
 ```
-./nmcli-toggle-ipv6.sh
+sudo ./nmcli-toggle-ipv6.sh
 ```
 
 The specified interface (e.g. wlp3s0) will be toggled for ipv6
 ```
-./nmcli-toggle-ipv6.sh wlp3s0
+sudo ./nmcli-toggle-ipv6.sh wlp3s0
 ```
