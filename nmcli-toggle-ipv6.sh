@@ -17,8 +17,6 @@ else
 	IFACE="$(nmcli --fields type,device connection show --active | grep wifi | awk '{printf $2}')"
 fi
 
-# Running this command with sudo, so that we prompt for password at the start
-# rather than at the end when we might have to flush the ip addresses.
 NAME="$(nmcli --fields name,device connection show --active | grep "$IFACE" | awk -F "  " '{printf $1}')"
 STATUS="$(nmcli --fields ipv6.method connection show --active "$NAME" | awk '{printf $2}')"
 echo "Toggling IPv6 for network interface \"$IFACE\""
@@ -33,6 +31,8 @@ if [ "$STATUS" = "ignore" ]; then
 else
 	# Have to flush the IPs here as even cycling the connection
 	# would not always cause the IP6 Addresses to be removed.
+	# Since the IPs are flushed directly bouncing the connection
+	# is unnecessary.
 	echo "IPv6 currently enabled.  Disabling..."
 	nmcli connection modify "$NAME" ipv6.method "ignore"
 	ip -6 addr flush "$IFACE"
