@@ -16,10 +16,10 @@ Make sure the script has executable permissions and then invoke it from the comm
 
 No arguments, the current active wifi interface will be toggled for ipv6
 ```
-./nmcli-toggle.sh
+./nmcli-toggle-ipv6.sh
 ```
 
 The specified interface (e.g. wlp3s0) will be toggled for ipv6
 ```
-./nmcli-toggle.sh wlp3s0
+./nmcli-toggle-ipv6.sh wlp3s0
 ```
