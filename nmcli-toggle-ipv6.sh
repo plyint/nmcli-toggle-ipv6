@@ -24,7 +24,7 @@ STATUS="$(nmcli --fields ipv6.method connection show --active "$NAME" | awk '{pr
 echo "Toggling IPv6 for network interface \"$IFACE\""
 if [ "$STATUS" = "ignore" ]; then
 	echo "IPv6 currently disabled.  Enabling..."
-  nmcli connection modify "$NAME" ipv6.method "auto"
+ 	nmcli connection modify "$NAME" ipv6.method "auto"
 	echo "NOTE: If you are using a mobile hotspot please turn it off/on now."
 	CONN_ACTIVATED="$(sudo nmcli connection up "$NAME" | grep success)"
 	if [ ! -z "$CONN_ACTIVATED" ]; then
@@ -34,7 +34,7 @@ else
 	# Have to flush the IPs here as even cycling the connection
 	# would not always cause the IP6 Addresses to be removed.
 	echo "IPv6 currently enabled.  Disabling..."
-  nmcli connection modify "$NAME" ipv6.method "ignore"
+	nmcli connection modify "$NAME" ipv6.method "ignore"
 	sudo ip -6 addr flush "$IFACE"
 	echo "IPv6 disabled."
 fi
