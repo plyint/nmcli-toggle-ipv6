@@ -14,5 +14,12 @@ NetworkManager is a part of the [GNOME](https://www.gnome.org) desktop environme
 
 Make sure the script has executable permissions and then invoke it from the command line.
 
-./nmcli-toggle.sh (No arguments, the current active wifi interface will be toggled for ipv6)
-./nmcli-toggle.sh <iface> (The specified interface will be toggled for ipv6)
+No arguments, the current active wifi interface will be toggled for ipv6
+```
+./nmcli-toggle.sh
+```
+
+The specified interface (e.g. wlp3s0) will be toggled for ipv6
+```
+./nmcli-toggle.sh wlp3s0
+```
